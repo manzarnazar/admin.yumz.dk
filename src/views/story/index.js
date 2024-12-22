@@ -35,7 +35,7 @@ const Storeis = () => {
               file_urls
                 ? file_urls[0].search('stories/')
                   ? IMG_URL + file_urls[0]
-                  : 'https://api.foodyman.org/storage/' + file_urls[0]
+                  : 'https://api.yumz.dk/storage/' + file_urls[0]
                 : 'https://via.placeholder.com/150'
             }
             alt='img_gallery'

@@ -1,1 +1,1 @@
-# foodyman_admin
+# yumz_admin
