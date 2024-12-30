@@ -54,7 +54,12 @@ export default function ShopTagForm({ form, handleSubmit }) {
         </Col>
         <Col span={12}>
           <Form.Item
-
+            rules={[
+              {
+                required: false,
+                message: t('required'),
+              },
+            ]}
             label={t('image')}
             name='images'
           >
