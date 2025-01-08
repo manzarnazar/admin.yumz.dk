@@ -522,6 +522,13 @@ const adminRoutes = [
         children: [],
       },
       {
+        name: 'invoice',
+        icon: 'orders',
+        url: 'report/invoice',
+        id: 'report-invoice',
+        children: [],
+      },
+      {
         name: 'stock',
         icon: 'stock',
         url: 'report/stock',

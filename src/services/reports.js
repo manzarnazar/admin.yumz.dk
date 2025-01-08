@@ -11,6 +11,8 @@ const ReportService = {
     request.get('dashboard/admin/orders/report/chart', { params }),
   getOrderProducts: (params) =>
     request.get('dashboard/admin/orders/report/paginate', { params }),
+  getInvoiceReport: (params) =>
+    request.get('dashboard/admin/orders/report/invoice', { params }),
   getStocks: (params) =>
     request.get('dashboard/admin/stocks/report/paginate', { params }),
   getCategoriesProducts: (params) =>

@@ -22,6 +22,10 @@ const RestraurantRoutes = [
     component: lazy(() => import('views/report-orders')),
   },
   {
+    path: 'report/invoice',
+    component: lazy(() => import('views/report-invoice')),
+  },
+  {
     path: 'report/variation',
     component: lazy(() => import('views/report-variation')),
   },

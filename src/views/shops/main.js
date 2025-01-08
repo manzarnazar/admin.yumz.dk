@@ -34,6 +34,7 @@ const ShopMain = ({ next, action_type = '', user }) => {
   const [logoImage, setLogoImage] = useState(
     activeMenu.data?.logo_img ? [activeMenu.data?.logo_img] : [],
   );
+   
   const [backImage, setBackImage] = useState(
     activeMenu.data?.background_img ? [activeMenu.data?.background_img] : [],
   );
@@ -61,6 +62,8 @@ const ShopMain = ({ next, action_type = '', user }) => {
   }, []);
 
   const onFinish = (values) => {
+    console.log("testvalues",values.fixed_commission);
+    
     setLoadingBtn(true);
     const email_statuses = values?.emailStatuses?.length
       ? Object.assign(
@@ -92,6 +95,7 @@ const ShopMain = ({ next, action_type = '', user }) => {
       ...email_statuses,
       emailStatuses: undefined,
       new_order_after_payment: values?.new_order_after_payment ? 1 : 0,
+      fixed_commission: values.fixed_commission, // Add this line
     };
     delete body?.background_img;
     delete body?.logo_img;
@@ -105,7 +109,11 @@ const ShopMain = ({ next, action_type = '', user }) => {
   function shopCreate(values, params) {
     shopService
       .create(params)
-      .then(({ data }) => {
+      .then(({ data,message }) => {
+        console.log(
+          "data",data, message
+        );
+        
         dispatch(
           replaceMenu({
             id: `shop-${data.uuid}`,
@@ -122,9 +130,13 @@ const ShopMain = ({ next, action_type = '', user }) => {
   }
 
   function shopUpdate(values, params) {
+   
     shopService
       .update(uuid, params)
-      .then(() => {
+      .then((data) => {
+        console.log(
+          "data",data,
+        );
         dispatch(
           setMenuData({
             activeMenu,

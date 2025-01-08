@@ -59,6 +59,7 @@ const ShopFormData = ({
 
   const sellerDocuments = activeMenu?.data?.documents || [];
 
+
   const { placePredictions, getPlacePredictions, isPlacePredictionsLoading } =
     useGoogle({
       apiKey: MAP_API_KEY,
@@ -522,13 +523,29 @@ const ShopFormData = ({
               <Form.Item
                 label={t('admin.comission')}
                 name='percentage'
-                rules={[{ required: true, message: t('required') }]}
+                rules={[{ required: false, message: t('required') }]}
+                
               >
                 <InputNumber
                   min={0}
                   max={100}
                   className='w-100'
                   addonAfter={'%'}
+                  
+                />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item
+                label={t('Pris pr. ordre')}
+                name='fixed_commission'
+                rules={[{ required: false, message: t('required') }]}
+              >
+                <InputNumber
+                  min={0}
+                  max={100}
+                  className='w-100'
+                  addonAfter={'DKK'}
                 />
               </Form.Item>
             </Col>

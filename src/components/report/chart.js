@@ -30,6 +30,7 @@ const ReportChart = ({ reportData = {} }) => {
               item.count ||
               item.price ||
               item.order_details_sum_quantity ||
+              item.commission_fee ||
               0
           ) || [],
         };
