@@ -267,7 +267,7 @@ const ShopFormData = ({
             </Col>
             <Col span={2}>
               <Form.Item label={t('open')} name='open' valuePropName='checked'>
-                <Switch disabled />
+                <Switch  />
               </Form.Item>
             </Col>
           </Row>
