@@ -109,9 +109,9 @@ const ShopMain = ({ next, action_type = '', user }) => {
   function shopCreate(values, params) {
     shopService
       .create(params)
-      .then(({ data,message }) => {
+      .then(({ data }) => {
         console.log(
-          "data",data, message
+          "data",data
         );
         
         dispatch(
@@ -133,10 +133,7 @@ const ShopMain = ({ next, action_type = '', user }) => {
    
     shopService
       .update(uuid, params)
-      .then((data) => {
-        console.log(
-          "data",data,
-        );
+      .then(() => {
         dispatch(
           setMenuData({
             activeMenu,
