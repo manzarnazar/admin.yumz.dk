@@ -23,7 +23,7 @@ export const MESSAGING_SENDER_ID = '915623425408';
 export const APP_ID = '1:915623425408:web:09548c1789881ece14fd65';
 export const MEASUREMENT_ID = 'G-KGLR5WC50X';
 // recaptcha key, you can get it from https://www.google.com/recaptcha/admin/create
-export const RECAPTCHASITEKEY = '6LfL0pQqAAAAAN2jkUrWhmMsfE9l0Z4YNDZmBDg7';
+export const RECAPTCHASITEKEY = '6LfpU7wqAAAAAANDxq8Vh02EVKk-O_6K3y2Vbt_9';
 
 // demo data, no need to change
 export const LAT = 47.4143302506288;
