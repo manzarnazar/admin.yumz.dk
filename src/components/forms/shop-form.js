@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Button,
   Card,
@@ -72,6 +72,8 @@ const ShopFormData = ({
     key: item,
   }));
 
+  
+  
   async function fetchUserList(search) {
     const params = { search, roles: 'user', 'empty-shop': 1 };
     setUserRefetch(false);
@@ -180,7 +182,44 @@ const ShopFormData = ({
       </Tag>
     );
   };
-
+  
+  const delivery_zipcodes = form.getFieldValue('shop_delivery_zipcodes');
+  console.log(delivery_zipcodes);
+  
+  const [fields, setFields] = useState(() => {
+    return delivery_zipcodes ? delivery_zipcodes.map(() => ({
+      zip_code: '',
+      city: '',
+      delivery_price: ''
+    })) : [{ zip_code: '', city: '', delivery_price: '' }];
+  });
+  
+  // useEffect(() => {
+  //   if (delivery_zipcodes && delivery_zipcodes.length !== fields.length) {
+  //     setFields(delivery_zipcodes.map(() => ({
+  //       zip_code: '',
+  //       city: '',
+  //       delivery_price: ''
+  //     })));
+  //   }
+  // }, [delivery_zipcodes]);
+  
+  const handleAdd = () => {
+    setFields([...fields, { zip_code: '', city: '', delivery_price: '' }]);
+  };
+  
+  const handleRemove = (index) => {
+    const newFields = [...fields];
+    newFields.splice(index, 1);
+    setFields(newFields);
+  };
+  
+  const handleFieldChange = (value, field, index) => {
+    const newFields = [...fields];
+    newFields[index][field] = value;
+    setFields(newFields);
+  };
+  
   return (
     <Row gutter={12}>
       <Col span={24}>
@@ -586,6 +625,126 @@ const ShopFormData = ({
           </Row>
         </Card>
       </Col>
+
+      <Col span={24}>
+  <Card title={t('delivery')}>
+    <Row gutter={4}>
+      {fields.map((field, index) => (
+        <Col span={24} key={index}>
+          <Row gutter={4}>
+            <Col span={6}>
+              <Form.Item
+                name={['shop_delivery_zipcodes', index, 'zip_code']}
+                label={t('zip.code')}
+                rules={[
+                  {
+                    required: true,
+                    message: t('required'),
+                  },
+                ]}
+              >
+                <Input
+                  value={field.zip_code}
+                  onChange={(e) =>
+                    handleFieldChange(e.target.value, 'zip_code', index)
+                  }
+                />
+              </Form.Item>
+            </Col>
+            <Col span={6}>
+              <Form.Item
+                name={['shop_delivery_zipcodes', index, 'city']}
+                label={t('city')}
+                rules={[
+                  {
+                    required: true,
+                    message: t('required'),
+                  },
+                ]}
+              >
+                <Input
+                  value={field.city}
+                  onChange={(e) =>
+                    handleFieldChange(e.target.value, 'city', index)
+                  }
+                />
+              </Form.Item>
+            </Col>
+            <Col span={6}style={{display:"none"}}>
+              <Form.Item
+                name={['shop_delivery_zipcodes', index, 'shop_id']}
+                label={t('city')}
+                rules={[
+                  {
+                    required: false,
+                    message: t('required'),
+                  },
+                ]}
+              >
+                <Input
+                  value={field.city}
+                  onChange={(e) =>
+                    handleFieldChange(e.target.value, 'city', index)
+                  }
+                />
+              </Form.Item>
+            </Col>
+            <Col span={6} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+              <Form.Item
+                name={['shop_delivery_zipcodes', index, 'delivery_price']}
+                label={t('delivery.price')}
+                rules={[
+                  {
+                    required: true,
+                    message: t('required'),
+                  },
+                ]}
+              >
+                <InputNumber
+                  min={0}
+                  value={field.delivery_price}
+                  onChange={(value) =>
+                    handleFieldChange(value, 'delivery_price', index)
+                  }
+                />
+                
+                
+              </Form.Item>
+              <Button
+                type="primary"
+                size="middle"
+                style={{
+                  // width: '100%',
+                  backgroundColor: '#F1B380', // Darker Soft Orange
+                  borderColor: '#F1B380', // Darker Soft Orange
+                }}
+                onClick={() => handleRemove(index)}
+              >
+                {t('Remove')}
+              </Button>
+            </Col>
+          </Row>
+        </Col>
+      ))}
+      <Col span={4}>
+        <Button
+          type="primary"
+          size="middle"
+          style={{
+            width: '100%',
+            backgroundColor: '#3e79f7', // Darker Soft Blue
+            borderColor: '#3e79f7', // Darker Soft Blue
+          }}
+          onClick={handleAdd}
+        >
+          {t('Tilføj Nyt Postnummer')}
+        </Button>
+      </Col>
+    </Row>
+  </Card>
+</Col>
+
+
 
       <Col span={24}>
         <Card title={t('address')}>

@@ -62,7 +62,7 @@ const ShopMain = ({ next, action_type = '', user }) => {
   }, []);
 
   const onFinish = (values) => {
-    console.log("testvalues",values.fixed_commission);
+    console.log("testvalues",values);
     
     setLoadingBtn(true);
     const email_statuses = values?.emailStatuses?.length
@@ -133,7 +133,9 @@ const ShopMain = ({ next, action_type = '', user }) => {
    
     shopService
       .update(uuid, params)
-      .then(() => {
+      .then((data) => {
+        console.log("testDATA",data);
+        
         dispatch(
           setMenuData({
             activeMenu,
