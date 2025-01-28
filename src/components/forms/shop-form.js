@@ -183,8 +183,11 @@ const ShopFormData = ({
     );
   };
   
+
+  // console.log("activeMenu",activeMenu);
+
   const delivery_zipcodes = form.getFieldValue('shop_delivery_zipcodes');
-  console.log(delivery_zipcodes);
+
   
   const [fields, setFields] = useState(() => {
     return delivery_zipcodes ? delivery_zipcodes.map(() => ({

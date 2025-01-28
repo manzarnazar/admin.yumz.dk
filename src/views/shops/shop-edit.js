@@ -63,12 +63,13 @@ const ShopsEdit = () => {
             value: item.id,
             key: item.id,
           })),
-          tags: res.data?.tags?.map((item) => ({
+          tags: res.data[0]?.map((item) => ({
             label: item?.translation?.title,
             value: item.id,
             key: item.id,
           })),
           price: res.data?.price || 0,
+          open:res.data.open,
           price_per_km: res.data?.price_per_km || 0,
           min_amount: res.data?.min_amount || 0,
           tax: res.data?.tax || 0,
@@ -79,6 +80,9 @@ const ShopsEdit = () => {
             key: item,
           })),
         };
+        console.log("res",res.data);
+        // console.log("res",data);
+        
         dispatch(setMenuData({ activeMenu, data }));
       })
       .finally(() => {
