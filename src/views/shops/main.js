@@ -73,6 +73,8 @@ const ShopMain = ({ next, action_type = '', user }) => {
           })),
         )
       : [];
+      console.log("values",values.open);
+      
     const body = {
       ...values,
       'images[0]': logoImage[0]?.name,
@@ -83,7 +85,7 @@ const ShopMain = ({ next, action_type = '', user }) => {
       categories: values.categories.map((e) => e.value),
       tags: values?.tags?.map((e) => e.value),
       user_id: values.user.value,
-      open: undefined,
+      open: values.open ? 1 : 0,
       wifi_name: values?.wifi_name || '',
       wifi_password: values?.wifi_password || '',
       'location[latitude]': location.lat,

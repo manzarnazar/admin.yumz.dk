@@ -187,6 +187,8 @@ const ShopFormData = ({
   // console.log("activeMenu",activeMenu);
 
   const delivery_zipcodes = form.getFieldValue('shop_delivery_zipcodes');
+  const test = form.getFieldValue();
+console.log(test);
 
   
   const [fields, setFields] = useState(() => {
@@ -309,7 +311,8 @@ const ShopFormData = ({
             </Col>
             <Col span={2}>
               <Form.Item label={t('open')} name='open' valuePropName='checked'>
-                <Switch  />
+              <Switch checked={test.open} />
+
               </Form.Item>
             </Col>
           </Row>
