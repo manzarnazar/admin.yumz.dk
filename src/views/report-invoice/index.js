@@ -341,7 +341,7 @@ const ReportInvoice = () => {
     // Summary
     doc.text("Summary", 14, 100);  // Adjusted Y position
 
-    const totalRevenue = parseFloat(data.data.revenue).toFixed(2);
+    const totalRevenue = parseFloat(data.revenue).toFixed(2);
     doc.text(`Total Revenue: ${totalRevenue} DKK`, 14, 110);  // Adjusted Y position
     doc.text(`Total Orders: ${data.total_orders}`, 14, 115);  // Adjusted Y position
     doc.text(`Commission: ${data.commission_fee} DKK`, 14, 120);  // Adjusted Y position
@@ -379,7 +379,7 @@ const ReportInvoice = () => {
 
   const handleGenerateInvoiceClick = () => {
     if (invoice) {
-      generateInvoice(invoice); // Passing invoice data to the function
+      generateInvoice(invoice);
     }
   };
 
