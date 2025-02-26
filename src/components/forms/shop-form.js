@@ -184,7 +184,7 @@ const ShopFormData = ({
   };
   
 
-  // console.log("activeMenu",activeMenu);
+  console.log("activeMenu",activeMenu);
 
   const delivery_zipcodes = form.getFieldValue('shop_delivery_zipcodes');
   const test = form.getFieldValue();
@@ -198,16 +198,7 @@ console.log(test);
       delivery_price: ''
     })) : [{ zip_code: '', city: '', delivery_price: '' }];
   });
-  
-  // useEffect(() => {
-  //   if (delivery_zipcodes && delivery_zipcodes.length !== fields.length) {
-  //     setFields(delivery_zipcodes.map(() => ({
-  //       zip_code: '',
-  //       city: '',
-  //       delivery_price: ''
-  //     })));
-  //   }
-  // }, [delivery_zipcodes]);
+ 
   
   const handleAdd = () => {
     setFields([...fields, { zip_code: '', city: '', delivery_price: '' }]);
@@ -472,6 +463,13 @@ console.log(test);
             <Col span={12}>
               <Form.Item name='emailStatuses' label={t('order.statuses.for.email.notifications')}>
                 <Select mode='multiple' options={emailStatusOptions} />
+              </Form.Item>
+            </Col>
+
+            <Col span={6}>
+              <Form.Item name='cvr_number' label={t('CVR Number')}>
+              <Input />
+
               </Form.Item>
             </Col>
           </Row>

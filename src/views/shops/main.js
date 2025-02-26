@@ -58,7 +58,7 @@ const ShopMain = ({ next, action_type = '', user }) => {
         setMenuData({ activeMenu, data: { ...activeMenu.data, ...data } }),
       );
     };
-    // eslint-disable-next-line
+
   }, []);
 
   const onFinish = (values) => {
